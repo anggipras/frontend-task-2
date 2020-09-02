@@ -1,0 +1,16 @@
+.header {
+    border: 1px solid black;
+    background-color: black;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    top: 0;
+}
+
+.barbar {
+    color: white;
+}
+
+.barbar:hover {
+    color: white;
+}

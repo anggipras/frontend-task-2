@@ -1,5 +1,8 @@
 body {
+  background: linear-gradient(89deg, #FF5EDF 0%, #04C8DE 100%);
   margin: 0;
+  position: relative;
+  top: 100px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -14,6 +17,6 @@ code {
 
 tr,td,th,table{
   border-collapse: collapse;
-  border: 1px solid black;
+  border: 3px solid black;
   padding: 10px;
 }
