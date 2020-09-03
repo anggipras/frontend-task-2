@@ -6,7 +6,7 @@ const Header = () => {
     return (
     <div className='header d-flex justify-content-start'>
         <div className=' p-3'>
-            <Link className='barbar' to='/home'>Home</Link>
+            <Link className='barbar' to='/'>Home</Link>
         </div>
         <div className='p-3'>
             <Link className='barbar' to='/product'>Product</Link>

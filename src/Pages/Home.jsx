@@ -98,6 +98,15 @@ class Home extends React.Component {
   yesdel = () => {
     var {datamurid, indexdelete} = this.state
     datamurid.splice(indexdelete, 1)
+
+    Swal.fire({
+      position: 'top-center',
+      icon: 'success',
+      title: 'Berhasil di delete!',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
     this.setState({datamurid, indexdelete: -1})
   }
 
