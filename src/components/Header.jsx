@@ -67,6 +67,9 @@ const Header = (props) => {
             <NavItem className='pt-2 mr-2'>
               <Link className='barbar' to="/whitespace">WHITESPACE</Link>
             </NavItem>
+            <NavItem className='pt-2 mr-2'>
+              <Link className='barbar' to="/apizomato">ZOMATO API</Link>
+            </NavItem>
           </Nav>
         <NavbarText>
             {props.bebas}

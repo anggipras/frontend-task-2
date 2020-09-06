@@ -1,6 +1,5 @@
 import React from 'react';
 import './Home.css'
-// import Particles from 'react-particles-js'
 import Swal from 'sweetalert2'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
@@ -9,18 +8,6 @@ var data = [
   {nama: 'andi', usia: 4, alamat: 'jl. sukaminggu'},
   {nama: 'santi', usia: 3, alamat: 'jl. sukabulan'}
 ]
-
-// const particleOptions = {
-//   particles: {
-//     number: {
-//       value: 70,
-//       density: {
-//         enable: true,
-//         value_area: 800
-//       }
-//     }
-//   }
-// }
 
 class Home extends React.Component {
   state = {

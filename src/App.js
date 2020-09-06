@@ -12,6 +12,7 @@ import HeaderPark from './components/HeaderPark'
 import HeaderSpace from './components/HeaderSpace'
 import Parkir from './Pages/Parkir'
 import Whitespace from './Pages/Whitespace'
+import Apizomato from './Pages/Apizomato'
 import Notfound from './Pages/notfound'
 import axios from 'axios'
 import Particles from 'react-particles-js'
@@ -74,6 +75,11 @@ class App extends React.Component {
               <Particles className='particles' params={particleOptions}/>
               <HeaderSpace />
               <Whitespace />
+            </Route>
+            <Route exact path='/apizomato'>
+              <Particles className='particles' params={particleOptions}/>
+              <Header />
+              <Apizomato />
             </Route>
             <Route path='*'>
               <Notfound />
