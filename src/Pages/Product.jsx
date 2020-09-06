@@ -1,16 +1,18 @@
 import React, {useState, useEffect} from 'react';
+import './Product.css'
 import axios from 'axios'
+import { connect } from 'react-redux';
+import {tambahangkaAction,kurangangkaAction} from './../redux/actions'
 
-const token = 'WBsLT0lwz7RsIcjA5OI9XsEfDoYn7ttEqKya72EPA2GrKyqfFi'
-
-const Product = () => {
+const Product = (props) => {
   const [dataProv, setDataProv] = useState([])
 
   useEffect(()=> {
-    axios.get(`https://x.rajaapi.com/MeP7c5ne${token}/m/wilayah/provinsi`)
+    axios.get(`https://x.rajaapi.com/MeP7c5ne${props.dataToken}/m/wilayah/provinsi`)
     .then((response)=> {
       console.log(response.data.data)
       setDataProv(response.data.data)
+      // props.gantidata(response.data.data)
     }).catch((err)=>{
       console.log(err)
     })
@@ -26,7 +28,7 @@ const Product = () => {
 
   const handleChangeProv = (e) => {
       console.log(e.target.value)
-      axios.get(`https://x.rajaapi.com/MeP7c5neWBsLT0lwz7RsIcjA5OI9XsEfDoYn7ttEqKya72EPA2GrKyqfFi/m/wilayah/kabupaten?idpropinsi=${e.target.value}`)
+      axios.get(`https://x.rajaapi.com/MeP7c5ne${props.dataToken}/m/wilayah/kabupaten?idpropinsi=${e.target.value}`)
       .then((response)=> {
         console.log(response.data.data)
         setDataKabu(response.data.data)
@@ -45,7 +47,7 @@ const Product = () => {
 
   const handleChangeKabu = (e) => {
     console.log(e.target.value)
-    axios.get(`https://x.rajaapi.com/MeP7c5neWBsLT0lwz7RsIcjA5OI9XsEfDoYn7ttEqKya72EPA2GrKyqfFi/m/wilayah/kecamatan?idkabupaten=${e.target.value}`)
+    axios.get(`https://x.rajaapi.com/MeP7c5ne${props.dataToken}/m/wilayah/kecamatan?idkabupaten=${e.target.value}`)
     .then((response)=> {
       console.log(response.data.data)
       setDataKeca(response.data.data)
@@ -64,7 +66,7 @@ const Product = () => {
 
   const handleChangeKelu = (e) => {
     console.log(e.target.value)
-    axios.get(`https://x.rajaapi.com/MeP7c5neWBsLT0lwz7RsIcjA5OI9XsEfDoYn7ttEqKya72EPA2GrKyqfFi/m/wilayah/kelurahan?idkecamatan=${e.target.value}`)
+    axios.get(`https://x.rajaapi.com/MeP7c5ne${props.dataToken}/m/wilayah/kelurahan?idkecamatan=${e.target.value}`)
     .then((response)=> {
       console.log(response.data.data)
       setDataKelu(response.data.data)
@@ -79,26 +81,50 @@ const Product = () => {
     })
   }
 
+  const [angka, setangka] = useState(1)
+
+  const tambahAngka = () => {
+    props.tambahangkaAction(angka)
+  }
+
+  const kurangAngka = () => {
+    props.kurangangkaAction()
+  }
+
   return (
-    <div className='ml-3'>
+    <div className='productbro'>
       <select onChange={handleChangeProv}>
         <option defaultValue="0" hidden>Pilih Provinsi</option>
         {renderProvinsi()}
-      </select> <br/><br/>
+      </select>
       <select defaultValue='0' onChange={handleChangeKabu} >
         <option value="0" hidden>Pilih kabupaten</option>
         {renderKabu()}
-      </select> <br/><br/>
+      </select>
       <select defaultValue='0' onChange={handleChangeKelu} >
         <option value="0" hidden>Pilih kecamatan</option>
         {renderKeca()}
-      </select> <br/><br/>
+      </select>
       <select defaultValue='0' >
         <option value="0" hidden>Pilih kelurahan</option>
         {renderKelu()}
       </select>
+      <div>
+        <h1>
+          {props.bebas}
+        </h1>
+        <input type="number" value={angka} onChange={(e)=>setangka(parseInt(e.target.value))}/>
+        <button className='btn btn-success' onClick={tambahAngka}>+</button>
+        <button className='btn btn-danger' onClick={kurangAngka}>-</button>
+      </div>
     </div>
   )
 }
 
-export default Product
+const MapStatetoProps=(state)=> {
+  return {
+    bebas:state.angka,
+  }
+}
+
+export default connect(MapStatetoProps,{tambahangkaAction, kurangangkaAction})(Product)

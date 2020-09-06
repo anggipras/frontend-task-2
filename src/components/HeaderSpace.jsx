@@ -13,7 +13,7 @@ import {connect} from 'react-redux'
 
 var angka = 0
 
-const Header = (props) => {
+const HeaderSpace = (props) => {
     const [isOpenModal, setIsOpen] = useState(false)
     useEffect (()=>{
         console.log('didmount')
@@ -27,33 +27,16 @@ const Header = (props) => {
         }
     })
 
-    useEffect(()=> {
-        return ()=> {
-            //your code here
-        }
-    }) //willunmount
-
     const toggle = () => setIsOpen(!isOpenModal);
 
     return (
-    // <div className='header d-flex justify-content-start'>
-    //     <div className=' p-3'>
-    //         <Link className='barbar' to='/'>Home</Link>
-    //     </div>
-    //     <div className='p-3'>
-    //         <Link className='barbar' to='/product'>Product</Link>
-    //     </div>
-    //     <div className='p-3'>
-    //         <Link className='barbar' to='/topics'>Topic</Link>
-    //     </div>
-    // </div>
     <div className='header barbar'>
       <Navbar expand="md">
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpenModal} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem className='pt-2 mr-2'>
-              <Link className='barbar' to="/">DATA</Link>
+              <Link className='barbar' to="/">HOME</Link>
             </NavItem>
             <NavItem className='pt-2 mr-2'>
               <Link className='barbar' to="/wilayah">WILAYAH</Link>
@@ -69,7 +52,7 @@ const Header = (props) => {
             </NavItem>
           </Nav>
         <NavbarText>
-            {props.bebas}
+            Jumlah kata: {props.kata} <br/>
           </NavbarText>
         </Collapse>
       </Navbar>
@@ -79,8 +62,10 @@ const Header = (props) => {
 
 const MapStatetoProps=(state)=> {
   return {
-    bebas:state.angka
+    parkir:state.park,
+    jam:state.thetime,
+    kata:state.thewords
   }
 }
 
-export default connect(MapStatetoProps)(Header)
+export default connect(MapStatetoProps)(HeaderSpace)

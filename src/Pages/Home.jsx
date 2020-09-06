@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.css'
-import Particles from 'react-particles-js'
+// import Particles from 'react-particles-js'
 import Swal from 'sweetalert2'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
@@ -10,17 +10,17 @@ var data = [
   {nama: 'santi', usia: 3, alamat: 'jl. sukabulan'}
 ]
 
-const particleOptions = {
-  particles: {
-    number: {
-      value: 70,
-      density: {
-        enable: true,
-        value_area: 800
-      }
-    }
-  }
-}
+// const particleOptions = {
+//   particles: {
+//     number: {
+//       value: 70,
+//       density: {
+//         enable: true,
+//         value_area: 800
+//       }
+//     }
+//   }
+// }
 
 class Home extends React.Component {
   state = {
@@ -221,8 +221,8 @@ class Home extends React.Component {
 
     if(this.state.datamurid.length !== 0){
       return (
-        <div style={{height:'100vh'}} className="mt-3 d-flex justify-content-center flex-column align-items-center">
-        <Particles className='particles' params={particleOptions}/>
+        <div style={{height:'105vh'}} className="d-flex justify-content-center flex-column align-items-center">
+        {/* <Particles className='particles' params={particleOptions}/> */}
           <Modal isOpen={isModalOpen} toggle={toggle}>
             <ModalHeader toggle={toggle}>Edit data {editnama}</ModalHeader>
             <ModalBody>

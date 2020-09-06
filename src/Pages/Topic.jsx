@@ -18,8 +18,8 @@ const Topic = (props) => {
       <Header />
       <div className='row'>
         <div className='col-md-6'>
-          <Link to='./product'>
-            <button>to Product</button>
+          <Link to='./wilayah'>
+            <button>ke Wilayah</button>
           </Link>
           <Link to={match.path + '/sopo iki'}>
             <button>to Anggi</button>
