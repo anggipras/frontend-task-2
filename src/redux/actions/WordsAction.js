@@ -1,7 +1,12 @@
-export const theWords=(angkakata)=>{
+export const theWords=()=>{
     return {
       type:'THEWORDS',
-      payload:angkakata
+    }
+  }
+
+  export const differWords=()=>{
+    return {
+      type:'DIFFERWORDS',
     }
   }
 

@@ -3,9 +3,11 @@ const InitialState = 0
 const WordsReducers = (state=InitialState, action) => {
     switch (action.type) {
         case 'THEWORDS':
-            return action.payload
+            return state + 1
+        case 'DIFFERWORDS':
+            return state + 0
         case 'ZEROWORDS':
-            return action.payload * 0
+            return state * 0
         default:
             return state
     }

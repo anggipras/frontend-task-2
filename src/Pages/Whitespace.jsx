@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import {theWords, zeroWords} from './../redux/actions'
+import {theWords, zeroWords, differWords} from './../redux/actions'
 import { connect } from 'react-redux';
 
 const Whitespace = (props) => {
-    const [angkakata, setangka] = useState(1)
+    const [angkakata, setangka] = useState(0)
     // const [angkakata, setangka] = useState(0)
     const [kondisi, setkondisi] = useState(true)
     const tambah = angkakata + 1
@@ -14,17 +14,17 @@ const Whitespace = (props) => {
 
         if(kondisi) {
             if(e.target.value.trim().length === e.target.value.length) {
-                props.theWords(angkakata)
-                console.log(angkakata)
+                props.theWords()
                 setkondisi(!kondisi)
             } 
         } else if(e.target.value.trim().length !== e.target.value.length) {
-            setangka(tambah)
+            // setangka(tambah)
+            props.differWords()
             setkondisi(true)
         } else if (e.target.value.length === 0) {
-            setangka(1)
-            props.zeroWords(angkakata)
-            console.log(angkakata)
+            // setangka(1)
+            props.zeroWords()
+            setkondisi(true)
         }
 
         // props.theWords(angkakata)
@@ -60,4 +60,4 @@ const MapStatetoProps=(state)=> {
     }
   }
   
-  export default connect(MapStatetoProps,{theWords, zeroWords})(Whitespace)
+  export default connect(MapStatetoProps,{theWords, zeroWords, differWords})(Whitespace)
